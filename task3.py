@@ -1,5 +1,7 @@
 import random
 import os
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def check_answer():
     if user_guess > answer:
@@ -13,7 +15,7 @@ easy_level = 10
 dif_level = 5
 def set_difficulty():
     level = input("Choose a difficulty. Type 'easy' or 'hard': ")        
-    if level == easy:
+    if level == "easy":
         return easy_level
     else:
         return dif_level    
@@ -21,12 +23,14 @@ def set_difficulty():
 
 print("Welcome to the number guess game")
 print("Guess a number between 1 and 100")
-answer = randint(1, 100)
+answer = random.randint(1, 100)
 
-user_guess = int(input("Input your guess: "))
+turns = set_difficulty()
+user_guess = 0
+while user_guess != answer:
+    user_guess = int(input("Input your guess: "))
 
-def clear():
-    os.system('cls' if os.name == 'nt' else 'clear')
+    check_answer()    
 
 
 
